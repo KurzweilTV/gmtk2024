@@ -249,3 +249,5 @@ position_smoothing_enabled = true
 
 [node name="FoodTimer" type="Timer" parent="."]
 autostart = true
+
+[connection signal="timeout" from="FoodTimer" to="." method="_on_food_timer_timeout"]

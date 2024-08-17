@@ -1,9 +1,17 @@
 extends CharacterBody2D
 
-@export var speed = 50
+@export var speed : int = 50
+@export var food_tick : int = 1
+
 @onready var sprite : AnimatedSprite2D = $Sprite
 @onready var autoshadow : AnimatedSprite2D = $Sprite/AutoShadow
+
 var hiding = false
+
+# System Functions
+
+func _ready() -> void:
+	start_food_timer()
 
 func get_input() -> Vector2:
 	return Input.get_vector("left", "right", "up", "down")
@@ -56,3 +64,15 @@ func stop_hiding() -> void:
 	hiding = false
 	hitbox.disabled = false
 	
+func change_food(amount: int) -> void:
+	Player.food -= amount
+	SignalBus.ui_updated.emit()
+	
+func start_food_timer() -> void:
+	$FoodTimer.start()
+
+
+# Signal Functions
+
+func _on_food_timer_timeout() -> void:
+	change_food(food_tick)
