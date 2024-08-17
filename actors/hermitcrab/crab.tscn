@@ -217,7 +217,7 @@ animations = [{
 radius = 5.0
 height = 18.0
 
-[node name="Crab" type="CharacterBody2D"]
+[node name="Crab" type="CharacterBody2D" groups=["player"]]
 texture_filter = 1
 script = ExtResource("1_kxskr")
 speed = 100

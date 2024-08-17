@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctavfdebc0sgc"]
+
+[ext_resource type="Texture2D" uid="uid://cme2pgtjboua2" path="res://actors/rocks/art/rockGrey_large.png" id="1_r5geg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h80ka"]
+radius = 33.0606
+
+[node name="Rock" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -17)
+texture = ExtResource("1_r5geg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h80ka")

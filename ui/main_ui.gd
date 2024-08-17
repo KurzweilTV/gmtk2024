@@ -5,8 +5,8 @@ extends Control
 
 func _ready() -> void:
 	SignalBus.ui_updated.connect(update_ui)
+	print("Signal: update_ui connected...")
 	update_ui()
 	
 func update_ui() -> void:
-	print("Food Changed to: " + str(Player.food))
 	food_bar.value = Player.food

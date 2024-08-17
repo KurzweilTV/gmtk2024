@@ -27,6 +27,10 @@ window/size/viewport_height=800
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+player=""
+
 [gui]
 
 theme/custom="res://ui/ui_theme.tres"

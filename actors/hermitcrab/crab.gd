@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 @export var speed : int = 50
-@export var food_tick : int = 1
+@export var max_food : int = 100
+@export var food_tick : int = -1
+@export var player_scale : float = 1.0
 
 @onready var sprite : AnimatedSprite2D = $Sprite
 @onready var autoshadow : AnimatedSprite2D = $Sprite/AutoShadow
@@ -11,6 +13,7 @@ var hiding = false
 # System Functions
 
 func _ready() -> void:
+	self.scale = Vector2(player_scale, player_scale)
 	start_food_timer()
 
 func get_input() -> Vector2:
@@ -35,7 +38,7 @@ func update_animation(direction: Vector2):
 
 func _physics_process(_delta):
 	var direction = get_input()
-	velocity = direction * speed
+	velocity = direction * (speed * clamp(player_scale, 0.5, 3.0)) # walk faster when you're bigger
 	if not hiding: # stop moving while hiding
 		move_and_slide()
 		update_animation(direction)
@@ -65,12 +68,16 @@ func stop_hiding() -> void:
 	hitbox.disabled = false
 	
 func change_food(amount: int) -> void:
-	Player.food -= amount
+	Player.food += amount
 	SignalBus.ui_updated.emit()
+	
+	if Player.food > max_food:
+		Player.food = max_food
+	elif Player.food <= 0:
+		SignalBus.gameover.emit() # Player Death signal
 	
 func start_food_timer() -> void:
 	$FoodTimer.start()
-
 
 # Signal Functions
 
