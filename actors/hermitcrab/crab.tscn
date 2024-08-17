@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c41sk4f3rsko2"]
+[gd_scene load_steps=31 format=3 uid="uid://c41sk4f3rsko2"]
 
 [ext_resource type="Script" path="res://actors/hermitcrab/crab.gd" id="1_kxskr"]
 [ext_resource type="Texture2D" uid="uid://bwm53wejcohdk" path="res://actors/hermitcrab/crab_sprite_sheet_redact.png" id="2_64wsp"]
@@ -187,7 +187,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -213,17 +213,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_vkw8i"]
-offsets = PackedFloat32Array(0, 0.636364)
-colors = PackedColorArray(0.00392157, 0.00392157, 0.00392157, 0.513726, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_55qmn"]
-gradient = SubResource("Gradient_vkw8i")
-width = 16
-height = 16
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_low3c"]
 radius = 5.0
 height = 18.0
@@ -238,11 +227,16 @@ sprite_frames = SubResource("SpriteFrames_q570l")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="Shadow" type="Sprite2D" parent="Sprite"]
-show_behind_parent = true
-position = Vector2(1, 16)
-scale = Vector2(1.1875, 0.463867)
-texture = SubResource("GradientTexture2D_55qmn")
+[node name="AutoShadow" type="AnimatedSprite2D" parent="Sprite"]
+modulate = Color(0.0352941, 0.0352941, 0.0352941, 0.266667)
+texture_filter = 2
+position = Vector2(0, 11.2647)
+scale = Vector2(1, 0.298594)
+sprite_frames = SubResource("SpriteFrames_q570l")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, 30)
+flip_v = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
@@ -251,5 +245,5 @@ rotation = -1.5708
 shape = SubResource("CapsuleShape2D_low3c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(5, 5)
 position_smoothing_enabled = true

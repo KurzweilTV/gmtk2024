@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 50
 @onready var sprite : AnimatedSprite2D = $Sprite
+@onready var autoshadow : AnimatedSprite2D = $Sprite/AutoShadow
 
 var hiding = false
 
@@ -15,11 +16,15 @@ func update_animation(direction: Vector2):
 		# Flip based on direction
 		if direction.x < 0:
 			sprite.flip_h = true
+			autoshadow.flip_h = true
+			
 		elif direction.x > 0:
 			sprite.flip_h = false
+			autoshadow.flip_h = false
 	else:
 		if not hiding:
 			sprite.play("idle")
+			autoshadow.play("idle")
 
 func _physics_process(_delta):
 	var direction = get_input()
@@ -41,11 +46,13 @@ func hide_in_shell() -> void:
 	var hitbox = $Collision
 	hiding = true
 	sprite.play("hide")
+	autoshadow.play("hide")
 	hitbox.disabled = true
 
 func stop_hiding() -> void:
 	var hitbox = $Collision
 	sprite.play("appear")
+	autoshadow.play("appear")
 	await sprite.animation_finished
 	hiding = false
 	hitbox.disabled = false
