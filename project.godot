@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK2024"
+config/tags=PackedStringArray("gamejam")
 run/main_scene="res://maps/beach.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
@@ -19,6 +20,10 @@ config/icon="res://icon.svg"
 
 Player="*res://globals/player_info.gd"
 SignalBus="*res://globals/signalbus.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=0
 
 [display]
 

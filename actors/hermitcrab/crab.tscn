@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c41sk4f3rsko2"]
+[gd_scene load_steps=35 format=3 uid="uid://c41sk4f3rsko2"]
 
 [ext_resource type="Script" path="res://actors/hermitcrab/crab.gd" id="1_kxskr"]
 [ext_resource type="Texture2D" uid="uid://bwm53wejcohdk" path="res://actors/hermitcrab/crab_sprite_sheet_redact.png" id="2_64wsp"]
@@ -217,6 +217,50 @@ animations = [{
 radius = 5.0
 height = 18.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_8v3b4"]
+font_size = 21
+font_color = Color(0.767025, 2.52686e-06, 9.62615e-07, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_u6twh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.767025, 2.52686e-06, 9.62615e-07, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gomhi"]
+resource_name = "blink"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.767025, 2.52686e-06, 9.62615e-07, 1), Color(1, 1, 0, 1), Color(0.767025, 2.52686e-06, 9.62615e-07, 1), Color(1, 1, 0, 1), Color(0.767025, 2.52686e-06, 9.62615e-07, 1), Color(1, 1, 0, 1), Color(0.767025, 2.52686e-06, 9.62615e-07, 1), Color(1, 1, 0, 1), Color(0.767025, 2.52686e-06, 9.62615e-07, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7lyfh"]
+_data = {
+"RESET": SubResource("Animation_u6twh"),
+"blink": SubResource("Animation_gomhi")
+}
+
 [node name="Crab" type="CharacterBody2D" groups=["player"]]
 texture_filter = 1
 script = ExtResource("1_kxskr")
@@ -247,7 +291,28 @@ shape = SubResource("CapsuleShape2D_low3c")
 zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="FoodTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="WarningLabel" type="Label" parent="."]
+visible = false
+z_index = 5
+offset_left = -11.0
+offset_top = -25.0
+offset_right = 12.0
+offset_bottom = 5.0
+text = "!"
+label_settings = SubResource("LabelSettings_8v3b4")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WarningLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_7lyfh")
+}
+autoplay = "blink"
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="FoodTimer" to="." method="_on_food_timer_timeout"]

@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=4 uid="uid://c03rcs7dutgeh"]
+[gd_scene load_steps=11 format=4 uid="uid://c03rcs7dutgeh"]
 
 [ext_resource type="Texture2D" uid="uid://dh33l10k3oe1q" path="res://art/tileSand1.png" id="1_450s5"]
 [ext_resource type="Texture2D" uid="uid://dphyjh8jhd5ki" path="res://art/tileSand2.png" id="2_fclbp"]
 [ext_resource type="PackedScene" uid="uid://c41sk4f3rsko2" path="res://actors/hermitcrab/crab.tscn" id="3_twlrd"]
+[ext_resource type="PackedScene" uid="uid://dhsdo21nfey0l" path="res://actors/seagull/Seagull.tscn" id="4_cxqt3"]
 [ext_resource type="PackedScene" uid="uid://ba57xxvv5k7uv" path="res://ui/main_ui.tscn" id="4_sqft7"]
-[ext_resource type="PackedScene" uid="uid://ctavfdebc0sgc" path="res://actors/rocks/rock.tscn" id="5_12fw3"]
-[ext_resource type="PackedScene" uid="uid://bhbrt1ttpal" path="res://actors/food/Food.tscn" id="6_jcuxs"]
+[ext_resource type="PackedScene" uid="uid://ctavfdebc0sgc" path="res://actors/rocks/rock.tscn" id="6_71xoa"]
+[ext_resource type="PackedScene" uid="uid://bhbrt1ttpal" path="res://actors/food/Food.tscn" id="7_4n47u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u42d1"]
 resource_name = "Sand"
@@ -35,29 +36,43 @@ tile_set = SubResource("TileSet_shkjs")
 position = Vector2(53, 91)
 speed = 50
 
-[node name="MainUi" parent="Crab" instance=ExtResource("4_sqft7")]
+[node name="Seagull" parent="Crab" instance=ExtResource("4_cxqt3")]
+
+[node name="PlayerUI" parent="Crab" instance=ExtResource("4_sqft7")]
 offset_left = -53.0
 offset_top = -91.0
 offset_right = -53.0
 offset_bottom = -91.0
 
-[node name="Rocks" type="Node2D" parent="."]
-texture_filter = 1
+[node name="Rock" parent="." instance=ExtResource("6_71xoa")]
+position = Vector2(116, 224)
 
-[node name="Rock" parent="Rocks" instance=ExtResource("5_12fw3")]
-position = Vector2(221, 107)
+[node name="Rock2" parent="." instance=ExtResource("6_71xoa")]
+position = Vector2(251, 87)
 
-[node name="Rock2" parent="Rocks" instance=ExtResource("5_12fw3")]
-position = Vector2(389, 299)
+[node name="Rock3" parent="." instance=ExtResource("6_71xoa")]
+position = Vector2(352, 267)
 
-[node name="Rock3" parent="Rocks" instance=ExtResource("5_12fw3")]
-position = Vector2(131, 335)
+[node name="Rock4" parent="." instance=ExtResource("6_71xoa")]
+position = Vector2(597, 110)
 
-[node name="Rock4" parent="Rocks" instance=ExtResource("5_12fw3")]
-position = Vector2(542, 147)
+[node name="Rock5" parent="." instance=ExtResource("6_71xoa")]
+position = Vector2(220, 318)
 
-[node name="Food" parent="." instance=ExtResource("6_jcuxs")]
-position = Vector2(140, 39)
+[node name="Food" parent="." instance=ExtResource("7_4n47u")]
+position = Vector2(145, 249)
 
-[node name="Food2" parent="." instance=ExtResource("6_jcuxs")]
-position = Vector2(253, 206)
+[node name="Food5" parent="." instance=ExtResource("7_4n47u")]
+position = Vector2(156, 238)
+
+[node name="Food6" parent="." instance=ExtResource("7_4n47u")]
+position = Vector2(313, 280)
+
+[node name="Food2" parent="." instance=ExtResource("7_4n47u")]
+position = Vector2(309, 144)
+
+[node name="Food3" parent="." instance=ExtResource("7_4n47u")]
+position = Vector2(319, 69)
+
+[node name="Food4" parent="." instance=ExtResource("7_4n47u")]
+position = Vector2(319, 69)
