@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhsdo21nfey0l"]
+[gd_scene load_steps=9 format=3 uid="uid://dhsdo21nfey0l"]
 
 [ext_resource type="Script" path="res://actors/seagull/seagull.gd" id="1_3uytx"]
 [ext_resource type="Texture2D" uid="uid://d5m2t4vffgkc" path="res://actors/seagull/ProtoSeagull.png" id="1_bbp37"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrppc"]
+radius = 16.0
 
 [sub_resource type="Gradient" id="Gradient_rpdoc"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
@@ -55,7 +58,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/4/type = "value"
@@ -154,13 +157,23 @@ _data = {
 
 [node name="Seagull" type="Node2D"]
 z_index = 3
+texture_filter = 1
 script = ExtResource("1_3uytx")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(1069, -27)
 texture = ExtResource("1_bbp37")
 
+[node name="Beak" type="Area2D" parent="Sprite"]
+position = Vector2(-1069, 27)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Beak"]
+position = Vector2(1007, 2)
+shape = SubResource("CircleShape2D_rrppc")
+
 [node name="WarningShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
 position = Vector2(40, 6)
 scale = Vector2(3.8125, 1.98756)
@@ -170,3 +183,5 @@ texture = SubResource("GradientTexture2D_d8rrt")
 libraries = {
 "": SubResource("AnimationLibrary_3yrpx")
 }
+
+[connection signal="body_entered" from="Sprite/Beak" to="." method="_on_beak_body_entered"]

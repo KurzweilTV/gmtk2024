@@ -8,3 +8,8 @@ func attack() -> void:
 	animation_player.play("attack")
 	await animation_player.animation_finished
 	self.queue_free()
+
+func _on_beak_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		printerr("Player was hit!")
+		body.die()

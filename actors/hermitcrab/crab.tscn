@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://c41sk4f3rsko2"]
+[gd_scene load_steps=36 format=3 uid="uid://c41sk4f3rsko2"]
 
 [ext_resource type="Script" path="res://actors/hermitcrab/crab.gd" id="1_kxskr"]
 [ext_resource type="Texture2D" uid="uid://bwm53wejcohdk" path="res://actors/hermitcrab/crab_sprite_sheet_redact.png" id="2_64wsp"]
+[ext_resource type="PackedScene" uid="uid://ba57xxvv5k7uv" path="res://ui/main_ui.tscn" id="3_egy5b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r70gq"]
 atlas = ExtResource("2_64wsp")
@@ -291,11 +292,7 @@ shape = SubResource("CapsuleShape2D_low3c")
 zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 
-[node name="AttackTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="FoodTimer" type="Timer" parent="."]
-autostart = true
+[node name="PlayerUI" parent="." instance=ExtResource("3_egy5b")]
 
 [node name="WarningLabel" type="Label" parent="."]
 visible = false
@@ -313,6 +310,14 @@ libraries = {
 "": SubResource("AnimationLibrary_7lyfh")
 }
 autoplay = "blink"
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FoodTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="HideTimer" type="Timer" parent="." groups=["player"]]
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="FoodTimer" to="." method="_on_food_timer_timeout"]

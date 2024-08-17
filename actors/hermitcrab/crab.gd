@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var player_scale : float = 1.0
 @export_category("Seagull")
 @export var min_attack_time : float = 5.0
-@export var max_attack_time : float = 20.0
+@export var max_attack_time : float = 8.0
 
 @onready var sprite : AnimatedSprite2D = $Sprite
 @onready var autoshadow : AnimatedSprite2D = $Sprite/AutoShadow
@@ -89,9 +89,19 @@ func start_food_timer() -> void:
 	$FoodTimer.start()
 	
 func start_attack_timer() -> void:
-	var attack_time = randi_range(min_attack_time, max_attack_time)
+	var attack_time = randf_range(min_attack_time, max_attack_time)
 	$AttackTimer.wait_time = attack_time
 	$AttackTimer.start()
+
+func die() -> void:
+	sprite.hide()
+	await get_tree().create_timer(1.5).timeout
+	SignalBus.gameover.emit()
+	self.queue_free()
+	
+
+func show_gameover() -> void:
+	pass
 
 # Signal Functions
 
