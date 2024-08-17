@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba57xxvv5k7uv"]
+
+[ext_resource type="Theme" uid="uid://c4p5f4y126i3c" path="res://ui/ui_theme.tres" id="1_8k4mf"]
+[ext_resource type="Script" path="res://ui/main_ui.gd" id="1_ki0ie"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_llkex"]
+font_size = 21
+font_color = Color(0, 0.698039, 0.592157, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.380392)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4xn8"]
+bg_color = Color(0, 0.698601, 0.593252, 1)
+border_width_top = 4
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="MainUi" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ki0ie")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -452.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 53.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="GridContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="FoodLabel" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "FOOD"
+label_settings = SubResource("LabelSettings_llkex")
+horizontal_alignment = 2
+
+[node name="FoodBar" type="ProgressBar" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_8k4mf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k4xn8")
+step = 1.0
+value = 38.0
+rounded = true
+fill_mode = 1
+show_percentage = false

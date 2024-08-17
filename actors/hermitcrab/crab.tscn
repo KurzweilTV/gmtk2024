@@ -229,7 +229,6 @@ autoplay = "idle"
 
 [node name="AutoShadow" type="AnimatedSprite2D" parent="Sprite"]
 modulate = Color(0.0352941, 0.0352941, 0.0352941, 0.266667)
-texture_filter = 2
 position = Vector2(0, 11.2647)
 scale = Vector2(1, 0.298594)
 sprite_frames = SubResource("SpriteFrames_q570l")
@@ -247,3 +246,6 @@ shape = SubResource("CapsuleShape2D_low3c")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 position_smoothing_enabled = true
+
+[node name="FoodTimer" type="Timer" parent="."]
+autostart = true

@@ -15,10 +15,21 @@ run/main_scene="res://maps/beach.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Player="*res://globals/player_info.gd"
+SignalBus="*res://globals/signalbus.gd"
+
 [display]
 
 window/size/viewport_width=1200
 window/size/viewport_height=800
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom="res://ui/ui_theme.tres"
 
 [input]
 

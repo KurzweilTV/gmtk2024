@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var speed = 50
 @onready var sprite : AnimatedSprite2D = $Sprite
 @onready var autoshadow : AnimatedSprite2D = $Sprite/AutoShadow
-
 var hiding = false
 
 func get_input() -> Vector2:
@@ -38,7 +37,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		hide_in_shell()
 	elif Input.is_action_just_released("hide") and hiding:
 		stop_hiding()
-		
+
 
 ### Gameplay Functions
 

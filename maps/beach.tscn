@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://c03rcs7dutgeh"]
+[gd_scene load_steps=8 format=4 uid="uid://c03rcs7dutgeh"]
 
 [ext_resource type="Texture2D" uid="uid://dh33l10k3oe1q" path="res://art/tileSand1.png" id="1_450s5"]
 [ext_resource type="Texture2D" uid="uid://dphyjh8jhd5ki" path="res://art/tileSand2.png" id="2_fclbp"]
 [ext_resource type="PackedScene" uid="uid://c41sk4f3rsko2" path="res://actors/hermitcrab/crab.tscn" id="3_twlrd"]
+[ext_resource type="PackedScene" uid="uid://ba57xxvv5k7uv" path="res://ui/main_ui.tscn" id="4_sqft7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u42d1"]
 resource_name = "Sand"
@@ -31,3 +32,9 @@ tile_set = SubResource("TileSet_shkjs")
 [node name="Crab" parent="." instance=ExtResource("3_twlrd")]
 position = Vector2(53, 91)
 speed = 50
+
+[node name="MainUi" parent="Crab" instance=ExtResource("4_sqft7")]
+offset_left = -53.0
+offset_top = -91.0
+offset_right = -53.0
+offset_bottom = -91.0
