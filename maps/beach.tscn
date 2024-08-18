@@ -36,7 +36,34 @@ tile_set = SubResource("TileSet_shkjs")
 [node name="PlayerUI" parent="." instance=ExtResource("4_ekscf")]
 
 [node name="Rock" parent="." instance=ExtResource("6_71xoa")]
+position = Vector2(58, 198)
+
+[node name="Rock" parent="Rock" instance=ExtResource("6_71xoa")]
 position = Vector2(116, 224)
+
+[node name="Rock6" parent="." instance=ExtResource("6_71xoa")]
+position = Vector2(110, 229)
+
+[node name="Rock" parent="Rock6" instance=ExtResource("6_71xoa")]
+position = Vector2(116, 224)
+
+[node name="Rock7" parent="." instance=ExtResource("6_71xoa")]
+position = Vector2(11, 154)
+
+[node name="Rock" parent="Rock7" instance=ExtResource("6_71xoa")]
+position = Vector2(116, 224)
+
+[node name="Rock8" parent="." instance=ExtResource("6_71xoa")]
+position = Vector2(28, 92)
+
+[node name="Rock" parent="Rock8" instance=ExtResource("6_71xoa")]
+position = Vector2(54, -32)
+
+[node name="Rock2" parent="Rock8" instance=ExtResource("6_71xoa")]
+position = Vector2(122, -31)
+
+[node name="Rock3" parent="Rock8" instance=ExtResource("6_71xoa")]
+position = Vector2(174, -8)
 
 [node name="Rock2" parent="." instance=ExtResource("6_71xoa")]
 position = Vector2(251, 87)
@@ -69,14 +96,18 @@ position = Vector2(319, 69)
 position = Vector2(319, 69)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(100, 97)
+position = Vector2(82, 112)
 
 [node name="Shell" parent="." instance=ExtResource("7_04b65")]
 position = Vector2(463, 83)
 shell_scale = 1.5
 
 [node name="Shell2" parent="." instance=ExtResource("7_04b65")]
-position = Vector2(189, 237)
+position = Vector2(127, 111)
+shell_scale = 1.1
+
+[node name="Shell7" parent="." instance=ExtResource("7_04b65")]
+position = Vector2(127, 111)
 shell_scale = 1.1
 
 [node name="Shell3" parent="." instance=ExtResource("7_04b65")]
