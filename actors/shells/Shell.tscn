@@ -1,0 +1,153 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2qecgk5mi3qc"]
+
+[ext_resource type="Script" path="res://actors/shells/shell.gd" id="1_4tmba"]
+[ext_resource type="Texture2D" uid="uid://b6gwnhmfyr3rw" path="res://actors/shells/crab_sprite_sheet_redact.png" id="1_robr3"]
+[ext_resource type="Texture2D" uid="uid://bel61iw3cyin2" path="res://actors/shells/upgrade_arrow.png" id="3_q6npn"]
+[ext_resource type="Texture2D" uid="uid://cx47l2txj4gjf" path="res://actors/shells/downgrade_arrow.png" id="4_jpnoo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1idut"]
+radius = 6.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2k5o"]
+font_size = 10
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.776471)
+
+[sub_resource type="Animation" id="Animation_j4egc"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(9, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_34bd7"]
+resource_name = "downgrade"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 9, -0.25, 0, 0.25, 0, 9, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_racwv"]
+resource_name = "upgrade"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 9, -0.25, 0, 0.25, 0, 9, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-7, -0.25, 0, 0.25, 0, -9, -0.25, 0, 0.25, 0, -7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1l71w"]
+_data = {
+"RESET": SubResource("Animation_j4egc"),
+"downgrade": SubResource("Animation_34bd7"),
+"upgrade": SubResource("Animation_racwv")
+}
+
+[node name="Shell" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_4tmba")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -12)
+texture = ExtResource("1_robr3")
+hframes = 6
+vframes = 5
+frame = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_1idut")
+
+[node name="DebugLabel" type="Label" parent="."]
+visible = false
+offset_left = -45.0
+offset_top = -35.0
+offset_right = 46.0
+offset_bottom = -12.0
+text = "DEBUG:  1.0"
+label_settings = SubResource("LabelSettings_k2k5o")
+
+[node name="Upgrade" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(9, 0)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("3_q6npn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Upgrade"]
+libraries = {
+"": SubResource("AnimationLibrary_1l71w")
+}
+autoplay = "upgrade"
+
+[node name="Downgrade" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(9, 0)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("4_jpnoo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Downgrade"]
+libraries = {
+"": SubResource("AnimationLibrary_1l71w")
+}
+autoplay = "downgrade"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

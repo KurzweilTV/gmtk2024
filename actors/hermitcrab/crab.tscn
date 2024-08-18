@@ -1,8 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://c41sk4f3rsko2"]
+[gd_scene load_steps=35 format=3 uid="uid://c41sk4f3rsko2"]
 
 [ext_resource type="Script" path="res://actors/hermitcrab/crab.gd" id="1_kxskr"]
 [ext_resource type="Texture2D" uid="uid://bwm53wejcohdk" path="res://actors/hermitcrab/crab_sprite_sheet_redact.png" id="2_64wsp"]
-[ext_resource type="PackedScene" uid="uid://ba57xxvv5k7uv" path="res://ui/main_ui.tscn" id="3_egy5b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r70gq"]
 atlas = ExtResource("2_64wsp")
@@ -289,10 +288,8 @@ rotation = -1.5708
 shape = SubResource("CapsuleShape2D_low3c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+zoom = Vector2(5.5, 5.5)
 position_smoothing_enabled = true
-
-[node name="PlayerUI" parent="." instance=ExtResource("3_egy5b")]
 
 [node name="WarningLabel" type="Label" parent="."]
 visible = false

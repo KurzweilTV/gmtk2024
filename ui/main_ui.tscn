@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba57xxvv5k7uv"]
+[gd_scene load_steps=6 format=3 uid="uid://ba57xxvv5k7uv"]
 
 [ext_resource type="Theme" uid="uid://c4p5f4y126i3c" path="res://ui/ui_theme.tres" id="1_8k4mf"]
 [ext_resource type="Script" path="res://ui/main_ui.gd" id="1_ki0ie"]
+[ext_resource type="PackedScene" uid="uid://dlyfkd5u0te8k" path="res://ui/gameover.tscn" id="3_uw2fb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_llkex"]
 font_size = 21
@@ -70,3 +71,6 @@ value = 38.0
 rounded = true
 fill_mode = 1
 show_percentage = false
+
+[node name="Gameover" parent="CanvasLayer" instance=ExtResource("3_uw2fb")]
+visible = false

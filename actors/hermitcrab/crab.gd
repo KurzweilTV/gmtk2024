@@ -4,15 +4,16 @@ extends CharacterBody2D
 @export var speed : int = 50
 @export var max_food : int = 100
 @export var food_tick : int = -1
-@export var player_scale : float = 1.0
+@export var starting_player_scale : float = 1.0
 @export_category("Seagull")
 @export var min_attack_time : float = 5.0
 @export var max_attack_time : float = 8.0
 
 @onready var sprite : AnimatedSprite2D = $Sprite
 @onready var autoshadow : AnimatedSprite2D = $Sprite/AutoShadow
-@onready var seagull: Node2D = $Seagull
+@onready var camera: Camera2D = $Camera2D
 
+var player_scale : float = 1.0
 var hiding = false
 var seagull_scene = preload("res://actors/seagull/Seagull.tscn")
 
@@ -20,11 +21,13 @@ var seagull_scene = preload("res://actors/seagull/Seagull.tscn")
 
 func _ready() -> void:
 	SignalBus.player_warning.connect(show_warning)
-	self.scale = Vector2(player_scale, player_scale)
+	Player.food = max_food
+	self.show()
+	self.scale = Vector2(starting_player_scale, starting_player_scale) # set initial scale for player
+	Player.shell_size = starting_player_scale
 	start_food_timer()
 	start_attack_timer()
 	
-
 func get_input() -> Vector2:
 	return Input.get_vector("left", "right", "up", "down")
 
@@ -93,12 +96,28 @@ func start_attack_timer() -> void:
 	$AttackTimer.wait_time = attack_time
 	$AttackTimer.start()
 
+func update_player_scale(size: float) -> void:
+	var change_in_size : float = (self.scale.x - size)
+	self.scale = Vector2(size, size)
+	Player.shell_size = size
+	update_camera_zoom(change_in_size)
+
+func update_camera_zoom(size_change: float) -> void:
+	var current_zoom : Vector2 = camera.zoom
+	var new_zoom_value : float = current_zoom.x + size_change
+	var new_zoom : Vector2 = Vector2(clamp(new_zoom_value, 1, 5), clamp(new_zoom_value, 1, 5))
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(camera, "zoom", new_zoom, 1)
+
 func die() -> void:
 	sprite.hide()
 	await get_tree().create_timer(1.5).timeout
 	SignalBus.gameover.emit()
-	self.queue_free()
 	
+func starve() -> void:
+	#TODO Handle the player starving to death
+	pass
 
 func show_gameover() -> void:
 	pass
