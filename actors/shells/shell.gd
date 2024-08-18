@@ -7,7 +7,7 @@ func _ready() -> void:
 	SignalBus.new_shell.connect(set_upgrade_arrows)
 	self.scale = Vector2(shell_scale, shell_scale)
 	set_upgrade_arrows(Player.shell_size)
-	#debug_label.text = "DEBUG: %s" % shell_scale
+	debug_label.text = "DEBUG: " + str(Player.shell_size)
 
 func set_upgrade_arrows(new_size) -> void:
 	if shell_scale > new_size:

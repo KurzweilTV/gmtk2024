@@ -264,7 +264,6 @@ _data = {
 [node name="Crab" type="CharacterBody2D" groups=["player"]]
 texture_filter = 1
 script = ExtResource("1_kxskr")
-speed = 100
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q570l")
@@ -288,7 +287,7 @@ rotation = -1.5708
 shape = SubResource("CapsuleShape2D_low3c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5.5, 5.5)
+zoom = Vector2(10, 10)
 position_smoothing_enabled = true
 
 [node name="WarningLabel" type="Label" parent="."]

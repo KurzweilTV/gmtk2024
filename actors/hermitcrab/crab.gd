@@ -1,19 +1,18 @@
 extends CharacterBody2D
 
 @export_category("Player")
-@export var speed : int = 50
+@export var initial_speed : int = 50
 @export var max_food : int = 100
 @export var food_tick : int = -1
 @export var starting_player_scale : float = 1.0
 @export_category("Seagull")
 @export var min_attack_time : float = 5.0
-@export var max_attack_time : float = 8.0
+@export var max_attack_time : float = 25.0
 
-@onready var sprite : AnimatedSprite2D = $Sprite
+@onready var sprite : AnimatedSprite2D = $Sprite 
 @onready var autoshadow : AnimatedSprite2D = $Sprite/AutoShadow
 @onready var camera: Camera2D = $Camera2D
 
-var player_scale : float = 1.0
 var hiding = false
 var seagull_scene = preload("res://actors/seagull/Seagull.tscn")
 
@@ -21,10 +20,11 @@ var seagull_scene = preload("res://actors/seagull/Seagull.tscn")
 
 func _ready() -> void:
 	SignalBus.player_warning.connect(show_warning)
+	Player.speed = initial_speed
 	Player.food = max_food
+	Player.shell_size = starting_player_scale
 	self.show()
 	self.scale = Vector2(starting_player_scale, starting_player_scale) # set initial scale for player
-	Player.shell_size = starting_player_scale
 	start_food_timer()
 	start_attack_timer()
 	
@@ -50,7 +50,7 @@ func update_animation(direction: Vector2):
 
 func _physics_process(_delta):
 	var direction = get_input()
-	velocity = direction * (speed * clamp(player_scale, 0.5, 3.0)) # walk faster when you're bigger
+	velocity = direction * (Player.speed * Player.shell_size) # walk faster when you're bigger
 	if not hiding: # stop moving while hiding
 		move_and_slide()
 		update_animation(direction)
@@ -98,17 +98,22 @@ func start_attack_timer() -> void:
 
 func update_player_scale(size: float) -> void:
 	var change_in_size : float = (self.scale.x - size)
-	self.scale = Vector2(size, size)
 	Player.shell_size = size
-	update_camera_zoom(change_in_size)
-
-func update_camera_zoom(size_change: float) -> void:
-	var current_zoom : Vector2 = camera.zoom
-	var new_zoom_value : float = current_zoom.x + size_change
-	var new_zoom : Vector2 = Vector2(clamp(new_zoom_value, 1, 5), clamp(new_zoom_value, 1, 5))
 	
 	var tween = get_tree().create_tween()
-	tween.tween_property(camera, "zoom", new_zoom, 1)
+	tween.tween_property(self, "scale", Vector2(size, size), 2)
+	
+	update_camera_zoom()
+
+func update_camera_zoom() -> void:
+	
+	var new_zoom_value: float = 10 / Player.shell_size
+	var new_zoom: Vector2 = Vector2(clamp(new_zoom_value, 1, 10), clamp(new_zoom_value, 1, 10))
+	
+	SignalBus.new_zoom.emit(new_zoom)
+
+	var tween = get_tree().create_tween()
+	tween.tween_property(camera, "zoom", new_zoom, 2)
 
 func die() -> void:
 	sprite.hide()

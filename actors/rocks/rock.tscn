@@ -7,6 +7,7 @@ radius = 33.0606
 
 [node name="Rock" type="StaticBody2D"]
 z_index = 1
+texture_filter = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -17)

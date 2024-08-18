@@ -1,6 +1,9 @@
 extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+func _ready() -> void:
+	self.scale = Vector2(5,5)
+
 func emit_warning() -> void:
 	SignalBus.player_warning.emit()
 

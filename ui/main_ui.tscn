@@ -31,7 +31,7 @@ script = ExtResource("1_ki0ie")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="PlayerStatus" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -41,26 +41,26 @@ offset_right = -8.0
 offset_bottom = 53.0
 grow_horizontal = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerStatus"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="GridContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+[node name="HBoxContainer" type="GridContainer" parent="CanvasLayer/PlayerStatus/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 columns = 2
 
-[node name="FoodLabel" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="FoodLabel" type="Label" parent="CanvasLayer/PlayerStatus/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 text = "FOOD"
 label_settings = SubResource("LabelSettings_llkex")
 horizontal_alignment = 2
 
-[node name="FoodBar" type="ProgressBar" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="FoodBar" type="ProgressBar" parent="CanvasLayer/PlayerStatus/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -71,6 +71,51 @@ value = 38.0
 rounded = true
 fill_mode = 1
 show_percentage = false
+
+[node name="DEBUG" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/DEBUG"]
+layout_mode = 2
+columns = 2
+
+[node name="SpeedName" type="Label" parent="CanvasLayer/DEBUG/GridContainer"]
+layout_mode = 2
+text = "Speed: "
+horizontal_alignment = 2
+
+[node name="SpeedLabel" type="Label" parent="CanvasLayer/DEBUG/GridContainer"]
+layout_mode = 2
+text = "50
+"
+
+[node name="Shell Size" type="Label" parent="CanvasLayer/DEBUG/GridContainer"]
+layout_mode = 2
+text = "Shell Size: "
+horizontal_alignment = 2
+
+[node name="ShellSizeLabel" type="Label" parent="CanvasLayer/DEBUG/GridContainer"]
+layout_mode = 2
+text = "50
+"
+
+[node name="CameraZoom" type="Label" parent="CanvasLayer/DEBUG/GridContainer"]
+layout_mode = 2
+text = "Camera Zoom: "
+horizontal_alignment = 2
+
+[node name="ZoomLabel" type="Label" parent="CanvasLayer/DEBUG/GridContainer"]
+layout_mode = 2
+text = "50
+"
 
 [node name="Gameover" parent="CanvasLayer" instance=ExtResource("3_uw2fb")]
 visible = false
