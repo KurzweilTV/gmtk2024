@@ -128,7 +128,7 @@ label_settings = SubResource("LabelSettings_k2k5o")
 unique_name_in_owner = true
 visible = false
 position = Vector2(9, 0)
-scale = Vector2(0.1875, 0.1875)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_q6npn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Upgrade"]
@@ -141,7 +141,7 @@ autoplay = "upgrade"
 unique_name_in_owner = true
 visible = false
 position = Vector2(9, 0)
-scale = Vector2(0.1875, 0.1875)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_jpnoo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Downgrade"]

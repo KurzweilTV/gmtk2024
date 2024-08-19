@@ -13,12 +13,12 @@ func _ready() -> void:
 	SignalBus.new_zoom.connect(update_debug_ui)
 	update_ui()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	speed_label.text = str(Player.speed * Player.shell_size)
 	shell_size_label.text = str(Player.shell_size)
 	
 func update_debug_ui(zoom) -> void:
-	zoom_label.text = str(zoom)
+	zoom_label.text = str(snapped(zoom.x, 0.01))
 	
 	
 func update_ui() -> void:

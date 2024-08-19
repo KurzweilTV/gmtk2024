@@ -1,0 +1,122 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctavfdebc0sgc"]
+
+[ext_resource type="Script" path="res://actors/rocks/rock_spawner.gd" id="1_fscb7"]
+[ext_resource type="Texture2D" uid="uid://cme2pgtjboua2" path="res://actors/rocks/art/rockGrey_large.png" id="1_ptq1n"]
+[ext_resource type="PackedScene" uid="uid://bhbrt1ttpal" path="res://actors/food/Food.tscn" id="2_so4yt"]
+
+[node name="Rock" type="StaticBody2D"]
+z_index = 1
+texture_filter = 1
+script = ExtResource("1_fscb7")
+food_scene = ExtResource("2_so4yt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -17)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ptq1n")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-19, -108, 24, -108, 47, -79, 55, -19, 73, 28, 34, 76, -40, 74, -72, 29, -72, 19, -55, -28, -41, -41, -32, -95)
+
+[node name="FoodGroup1" type="Node2D" parent="."]
+visible = false
+
+[node name="Food" parent="FoodGroup1" instance=ExtResource("2_so4yt")]
+position = Vector2(-60, -23)
+
+[node name="Food2" parent="FoodGroup1" instance=ExtResource("2_so4yt")]
+position = Vector2(-65, -12)
+
+[node name="Food3" parent="FoodGroup1" instance=ExtResource("2_so4yt")]
+position = Vector2(-69, -9.53674e-07)
+
+[node name="Food4" parent="FoodGroup1" instance=ExtResource("2_so4yt")]
+position = Vector2(-73, 11)
+
+[node name="Food5" parent="FoodGroup1" instance=ExtResource("2_so4yt")]
+position = Vector2(-81, 3)
+
+[node name="Food6" parent="FoodGroup1" instance=ExtResource("2_so4yt")]
+position = Vector2(-77, -7)
+
+[node name="Food7" parent="FoodGroup1" instance=ExtResource("2_so4yt")]
+position = Vector2(-74, -19)
+
+[node name="Food8" parent="FoodGroup1" instance=ExtResource("2_so4yt")]
+position = Vector2(-54, -34)
+
+[node name="Food9" parent="FoodGroup1" instance=ExtResource("2_so4yt")]
+position = Vector2(-71, -29)
+
+[node name="Food10" parent="FoodGroup1" instance=ExtResource("2_so4yt")]
+position = Vector2(-45, -44)
+
+[node name="FoodGroup2" type="Node2D" parent="."]
+visible = false
+
+[node name="Food" parent="FoodGroup2" instance=ExtResource("2_so4yt")]
+position = Vector2(-66, 44)
+
+[node name="Food2" parent="FoodGroup2" instance=ExtResource("2_so4yt")]
+position = Vector2(-59, 54)
+
+[node name="Food3" parent="FoodGroup2" instance=ExtResource("2_so4yt")]
+position = Vector2(-51, 64)
+
+[node name="Food4" parent="FoodGroup2" instance=ExtResource("2_so4yt")]
+position = Vector2(-44, 75)
+
+[node name="Food5" parent="FoodGroup2" instance=ExtResource("2_so4yt")]
+position = Vector2(-30, 76)
+
+[node name="Food6" parent="FoodGroup2" instance=ExtResource("2_so4yt")]
+position = Vector2(-17, 76)
+
+[node name="Food7" parent="FoodGroup2" instance=ExtResource("2_so4yt")]
+position = Vector2(-3, 77)
+
+[node name="Food8" parent="FoodGroup2" instance=ExtResource("2_so4yt")]
+position = Vector2(-11, 87)
+
+[node name="Food9" parent="FoodGroup2" instance=ExtResource("2_so4yt")]
+position = Vector2(-37, 86)
+
+[node name="Food10" parent="FoodGroup2" instance=ExtResource("2_so4yt")]
+position = Vector2(-63, 65)
+
+[node name="FoodGroup3" type="Node2D" parent="."]
+visible = false
+
+[node name="Food" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
+position = Vector2(73, 36)
+
+[node name="Food2" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
+position = Vector2(68, 48)
+
+[node name="Food3" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
+position = Vector2(57, 57)
+
+[node name="Food4" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
+position = Vector2(48, 66)
+
+[node name="Food5" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
+position = Vector2(40, 74)
+
+[node name="Food6" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
+position = Vector2(52, 77)
+
+[node name="Food7" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
+position = Vector2(62, 67)
+
+[node name="Food8" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
+position = Vector2(72, 58)
+
+[node name="Food9" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
+position = Vector2(72, 58)
+
+[node name="Food10" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
+position = Vector2(80, 46)
+
+[node name="Food11" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
+position = Vector2(78, 24)

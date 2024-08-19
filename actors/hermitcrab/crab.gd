@@ -3,16 +3,17 @@ extends CharacterBody2D
 @export_category("Player")
 @export var initial_speed : int = 30
 @export var max_food : int = 100
-@export var food_tick : int = -20
+@export var food_tick : int = -1
 @export var starting_player_scale : float = 1.0
 @export_category("Seagull")
-@export var min_attack_time : float = 5.0
-@export var max_attack_time : float = 25.0
+@export var min_attack_time : float = 10.0
+@export var max_attack_time : float = 30.0
 
 @onready var sprite : AnimatedSprite2D = $Sprite 
 @onready var autoshadow : AnimatedSprite2D = $Sprite/AutoShadow
 @onready var camera: Camera2D = $Camera2D
 
+var tutorial_complete = false
 var hiding = false
 var dead = false
 var seagull_scene = preload("res://actors/seagull/Seagull.tscn")
@@ -27,8 +28,7 @@ func _ready() -> void:
 	self.show()
 	self.scale = Vector2(starting_player_scale, starting_player_scale) # set initial scale for player
 	dead = false
-	start_food_timer()
-	start_attack_timer()
+	Player.food = 10
 	
 func get_input() -> Vector2:
 	return Input.get_vector("left", "right", "up", "down")
@@ -52,10 +52,12 @@ func update_animation(direction: Vector2):
 
 func _physics_process(_delta):
 	var direction = get_input()
-	velocity = direction * (Player.speed * (Player.shell_size / 0.8)) # walk faster when you're bigger
-	if not hiding: # stop moving while hiding
-		move_and_slide()
-		update_animation(direction)
+	if not hiding and not dead: # stop moving while hiding
+		velocity = direction * (Player.speed * (Player.shell_size / 0.8)) # walk faster when you're bigger
+	else:
+		velocity = Vector2.ZERO
+	move_and_slide()
+	update_animation(direction)
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("hide") and not hiding:
@@ -99,7 +101,6 @@ func start_attack_timer() -> void:
 	$AttackTimer.start()
 
 func update_player_scale(size: float) -> void:
-	var change_in_size : float = (self.scale.x - size)
 	Player.shell_size = size
 	
 	var tween = get_tree().create_tween()
@@ -115,6 +116,12 @@ func update_camera_zoom() -> void:
 
 	var tween = get_tree().create_tween()
 	tween.tween_property(camera, "zoom", new_zoom, 2)
+
+func leave_safe_cove() -> void:
+	print("Leaving Safe Area")
+	tutorial_complete = true
+	start_food_timer()
+	start_attack_timer()
 
 func die() -> void:
 	dead = true
@@ -136,9 +143,8 @@ func show_gameover() -> void:
 # Signal Functions
 
 func show_warning() -> void:
-	printerr("Seagull Warning!")
 	$WarningLabel.show()
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1).timeout
 	$WarningLabel.hide()
 
 func _on_food_timer_timeout() -> void:

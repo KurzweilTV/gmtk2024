@@ -1,0 +1,148 @@
+[gd_scene load_steps=17 format=4 uid="uid://d3bt6im21guuw"]
+
+[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_ybjsn"]
+[ext_resource type="Texture2D" uid="uid://bwm53wejcohdk" path="res://actors/hermitcrab/crab_sprite_sheet_redact.png" id="2_crujv"]
+[ext_resource type="Texture2D" uid="uid://6fkew6dc6djv" path="res://art/land_sand14.png" id="2_ma1lc"]
+[ext_resource type="Texture2D" uid="uid://dwf4cqeylrhg8" path="res://art/land_sand05.png" id="3_tqwa3"]
+[ext_resource type="AudioStream" uid="uid://bno6whertmfed" path="res://sounds/music/Night at the Beach.ogg" id="4_kgt08"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4anam"]
+texture = ExtResource("2_ma1lc")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_esb8x"]
+texture = ExtResource("3_tqwa3")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jfduk"]
+tile_size = Vector2i(128, 128)
+sources/1 = SubResource("TileSetAtlasSource_esb8x")
+sources/0 = SubResource("TileSetAtlasSource_4anam")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt7qj"]
+atlas = ExtResource("2_crujv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul2bl"]
+atlas = ExtResource("2_crujv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opdx3"]
+atlas = ExtResource("2_crujv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1218t"]
+atlas = ExtResource("2_crujv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jqlg"]
+atlas = ExtResource("2_crujv")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqqwc"]
+atlas = ExtResource("2_crujv")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_do7rk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt7qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul2bl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opdx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1218t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jqlg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqqwc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_akges"]
+font_size = 47
+
+[node name="MainMenu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ybjsn")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00549999, 0.286825, 0.55, 1)
+
+[node name="SandLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAYAAQAAAAAAAAABAAYAAQAAAAAAAAACAAYAAQAAAAAAAAADAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAAFAAYAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAIAAYAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAUAAQAAAAAAAAAJAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAQAAAAAAAAAAAAUAAQAAAAAAAAABAAUAAQAAAAAAAAACAAUAAQAAAAAAAAADAAUAAQAAAAAAAAAEAAUAAQAAAAAAAAAFAAUAAQAAAAAAAAAGAAUAAQAAAAAAAAAHAAUAAQAAAAAAAAAIAAUAAQAAAAAAAAD//wYAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_jfduk")
+
+[node name="Character" type="AnimatedSprite2D" parent="."]
+position = Vector2(853, 66.0001)
+scale = Vector2(36.0602, 29.535)
+sprite_frames = SubResource("SpriteFrames_do7rk")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_left = 73.0
+offset_top = 49.0
+offset_right = 460.0
+offset_bottom = 468.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "The Big Crabbo"
+label_settings = SubResource("LabelSettings_akges")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 31
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 31
+text = "Options"
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("4_kgt08")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

@@ -205,7 +205,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 6.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -284,6 +284,7 @@ texture_filter = 1
 script = ExtResource("1_kxskr")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 5
 sprite_frames = SubResource("SpriteFrames_q570l")
 animation = &"idle"
 
@@ -329,7 +330,6 @@ autoplay = "blink"
 one_shot = true
 
 [node name="FoodTimer" type="Timer" parent="."]
-autostart = true
 
 [node name="HideTimer" type="Timer" parent="." groups=["player"]]
 

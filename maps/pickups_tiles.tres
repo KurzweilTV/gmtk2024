@@ -1,0 +1,13 @@
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://p5uqeenyksm8"]
+
+[ext_resource type="PackedScene" uid="uid://c2qecgk5mi3qc" path="res://actors/shells/Shell.tscn" id="1_3d0al"]
+[ext_resource type="PackedScene" uid="uid://bhbrt1ttpal" path="res://actors/food/Food.tscn" id="2_fpixv"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hkm6j"]
+resource_name = "Pickups"
+scenes/1/scene = ExtResource("1_3d0al")
+scenes/2/scene = ExtResource("2_fpixv")
+
+[resource]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetScenesCollectionSource_hkm6j")
