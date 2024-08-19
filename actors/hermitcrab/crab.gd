@@ -101,16 +101,30 @@ func start_attack_timer() -> void:
 	$AttackTimer.start()
 
 func update_player_scale(size: float) -> void:
-	Player.shell_size = size
+	Player.shell_size = clamp(size, 0.5, 12)
+	
+	if size == 70: #This means we found the King Shell
+		Player.shell_size = 70
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(size, size), 2)
 	update_camera_zoom()
+	
+	if Player.shell_size >= 5:
+		set_collision_layer_value(3, false)
+		set_collision_mask_value(3, false)
+		print("Disabled Collision Layer 3")
+		
+	if Player.shell_size >= 10:
+		set_collision_layer_value(2, false)
+		set_collision_mask_value(2, false)
+		print("Disabled Collision Layer 2")
+		
 
 func update_camera_zoom() -> void:
 	
 	var new_zoom_value: float = 10 / Player.shell_size
-	var new_zoom: Vector2 = Vector2(clamp(new_zoom_value, 1, 10), clamp(new_zoom_value, 1, 10))
+	var new_zoom: Vector2 = Vector2(clamp(new_zoom_value, .5, 10), clamp(new_zoom_value, .5, 10))
 	
 	SignalBus.new_zoom.emit(new_zoom)
 

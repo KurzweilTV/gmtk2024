@@ -101,7 +101,9 @@ _data = {
 }
 
 [node name="Shell" type="Area2D"]
+z_index = 2
 texture_filter = 1
+collision_mask = 7
 script = ExtResource("1_4tmba")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -137,7 +139,7 @@ libraries = {
 }
 autoplay = "upgrade"
 
-[node name="Downgrade" type="Sprite2D" parent="."]
+[node name="Downgrade" type="Sprite2D" parent="." groups=["shell"]]
 unique_name_in_owner = true
 visible = false
 position = Vector2(9, 0)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctavfdebc0sgc"]
+[gd_scene load_steps=5 format=3 uid="uid://ctavfdebc0sgc"]
 
 [ext_resource type="Script" path="res://actors/rocks/rock_spawner.gd" id="1_fscb7"]
 [ext_resource type="Texture2D" uid="uid://cme2pgtjboua2" path="res://actors/rocks/art/rockGrey_large.png" id="1_ptq1n"]
 [ext_resource type="PackedScene" uid="uid://bhbrt1ttpal" path="res://actors/food/Food.tscn" id="2_so4yt"]
+[ext_resource type="PackedScene" uid="uid://c2qecgk5mi3qc" path="res://actors/shells/Shell.tscn" id="4_5ybbr"]
 
 [node name="Rock" type="StaticBody2D"]
 z_index = 1
@@ -20,7 +21,6 @@ visible = false
 polygon = PackedVector2Array(-19, -108, 24, -108, 47, -79, 55, -19, 73, 28, 34, 76, -40, 74, -72, 29, -72, 19, -55, -28, -41, -41, -32, -95)
 
 [node name="FoodGroup1" type="Node2D" parent="."]
-visible = false
 
 [node name="Food" parent="FoodGroup1" instance=ExtResource("2_so4yt")]
 position = Vector2(-60, -23)
@@ -53,7 +53,6 @@ position = Vector2(-71, -29)
 position = Vector2(-45, -44)
 
 [node name="FoodGroup2" type="Node2D" parent="."]
-visible = false
 
 [node name="Food" parent="FoodGroup2" instance=ExtResource("2_so4yt")]
 position = Vector2(-66, 44)
@@ -86,7 +85,6 @@ position = Vector2(-37, 86)
 position = Vector2(-63, 65)
 
 [node name="FoodGroup3" type="Node2D" parent="."]
-visible = false
 
 [node name="Food" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
 position = Vector2(73, 36)
@@ -120,3 +118,13 @@ position = Vector2(80, 46)
 
 [node name="Food11" parent="FoodGroup3" instance=ExtResource("2_so4yt")]
 position = Vector2(78, 24)
+
+[node name="Shell1" parent="." groups=["shell"] instance=ExtResource("4_5ybbr")]
+position = Vector2(-114, 32)
+collision_layer = 7
+
+[node name="Shell2" parent="." groups=["shell"] instance=ExtResource("4_5ybbr")]
+position = Vector2(31, 111)
+
+[node name="Shell3" parent="." groups=["shell"] instance=ExtResource("4_5ybbr")]
+position = Vector2(105, -24)

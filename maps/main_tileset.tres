@@ -1,11 +1,9 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://dx2vh1ppcxpvk"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dx2vh1ppcxpvk"]
 
 [ext_resource type="Texture2D" uid="uid://dwf4cqeylrhg8" path="res://art/land_sand05.png" id="1_ofhwj"]
 [ext_resource type="PackedScene" uid="uid://ctavfdebc0sgc" path="res://actors/rocks/rock-large.tscn" id="2_c3auv"]
 [ext_resource type="PackedScene" uid="uid://d1ijes5hssb4r" path="res://actors/rocks/rock-medium.tscn" id="3_0t784"]
 [ext_resource type="PackedScene" uid="uid://cmtcjeiflrh68" path="res://actors/rocks/rock-small.tscn" id="4_20rjb"]
-[ext_resource type="PackedScene" uid="uid://bhbrt1ttpal" path="res://actors/food/Food.tscn" id="5_bhyqf"]
-[ext_resource type="PackedScene" uid="uid://c2qecgk5mi3qc" path="res://actors/shells/Shell.tscn" id="6_kh2bd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dri22"]
 texture = ExtResource("1_ofhwj")
@@ -18,13 +16,7 @@ scenes/1/scene = ExtResource("2_c3auv")
 scenes/2/scene = ExtResource("3_0t784")
 scenes/3/scene = ExtResource("4_20rjb")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gqqxr"]
-resource_name = "Pickups"
-scenes/1/scene = ExtResource("5_bhyqf")
-scenes/2/scene = ExtResource("6_kh2bd")
-
 [resource]
 tile_size = Vector2i(128, 128)
 sources/3 = SubResource("TileSetAtlasSource_dri22")
 sources/4 = SubResource("TileSetScenesCollectionSource_4qpa1")
-sources/5 = SubResource("TileSetScenesCollectionSource_gqqxr")

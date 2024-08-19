@@ -42,6 +42,8 @@ folder_colors={
 [global_group]
 
 player=""
+shell=""
+kingshell=""
 
 [gui]
 
