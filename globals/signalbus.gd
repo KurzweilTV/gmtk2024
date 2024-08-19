@@ -5,3 +5,4 @@ signal gameover
 signal player_warning
 signal new_shell(size)
 signal new_zoom(zoom)
+signal game_won

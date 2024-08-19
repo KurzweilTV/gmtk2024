@@ -119,6 +119,7 @@ func update_player_scale(size: float) -> void:
 		set_collision_layer_value(2, false)
 		set_collision_mask_value(2, false)
 		print("Disabled Collision Layer 2")
+		$AttackTimer.stop()
 		
 
 func update_camera_zoom() -> void:

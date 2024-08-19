@@ -15,6 +15,7 @@ script = ExtResource("1_44cii")
 texture = ExtResource("1_4bdq0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_x0mlw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

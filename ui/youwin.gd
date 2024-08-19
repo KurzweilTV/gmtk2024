@@ -4,9 +4,9 @@ extends Control
 @export var main_menu_scene : PackedScene = load("res://ui/main_menu.tscn")
 
 
-func _on_start_button_pressed() -> void:
+func _on_playagain_button_pressed() -> void:
 	get_tree().change_scene_to_packed(main_game_scene)
 
 
-func _on_options_button_pressed() -> void:
-	print("Options Screen goes here")
+func _on_mainmenu_button_pressed() -> void:
+	get_tree().change_scene_to_packed(main_menu_scene)

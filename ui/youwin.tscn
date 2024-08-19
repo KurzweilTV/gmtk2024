@@ -1,19 +1,20 @@
-[gd_scene load_steps=18 format=4 uid="uid://d3bt6im21guuw"]
+[gd_scene load_steps=19 format=4 uid="uid://d6cmd8m0n0qo"]
 
-[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_ybjsn"]
-[ext_resource type="Texture2D" uid="uid://bwm53wejcohdk" path="res://actors/hermitcrab/crab_sprite_sheet_redact.png" id="2_crujv"]
-[ext_resource type="Texture2D" uid="uid://6fkew6dc6djv" path="res://art/land_sand14.png" id="2_ma1lc"]
-[ext_resource type="Texture2D" uid="uid://dwf4cqeylrhg8" path="res://art/land_sand05.png" id="3_tqwa3"]
-[ext_resource type="AudioStream" uid="uid://bno6whertmfed" path="res://sounds/music/Night at the Beach.ogg" id="4_kgt08"]
-[ext_resource type="Texture2D" uid="uid://cqn2mxamiwp6t" path="res://art/godotlogo.png" id="5_urj5y"]
+[ext_resource type="Script" path="res://ui/youwin.gd" id="1_48nlc"]
+[ext_resource type="Texture2D" uid="uid://6fkew6dc6djv" path="res://art/land_sand14.png" id="2_mgcvj"]
+[ext_resource type="Texture2D" uid="uid://dwf4cqeylrhg8" path="res://art/land_sand05.png" id="3_l8lca"]
+[ext_resource type="Texture2D" uid="uid://cqn2mxamiwp6t" path="res://art/godotlogo.png" id="4_q37eo"]
+[ext_resource type="Texture2D" uid="uid://bwm53wejcohdk" path="res://actors/hermitcrab/crab_sprite_sheet_redact.png" id="5_4jk0n"]
+[ext_resource type="Theme" uid="uid://c4p5f4y126i3c" path="res://ui/ui_theme.tres" id="6_lff6f"]
+[ext_resource type="AudioStream" uid="uid://bno6whertmfed" path="res://sounds/music/Night at the Beach.ogg" id="6_vapk2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4anam"]
-texture = ExtResource("2_ma1lc")
+texture = ExtResource("2_mgcvj")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_esb8x"]
-texture = ExtResource("3_tqwa3")
+texture = ExtResource("3_l8lca")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
@@ -23,27 +24,27 @@ sources/1 = SubResource("TileSetAtlasSource_esb8x")
 sources/0 = SubResource("TileSetAtlasSource_4anam")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xt7qj"]
-atlas = ExtResource("2_crujv")
+atlas = ExtResource("5_4jk0n")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ul2bl"]
-atlas = ExtResource("2_crujv")
+atlas = ExtResource("5_4jk0n")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opdx3"]
-atlas = ExtResource("2_crujv")
+atlas = ExtResource("5_4jk0n")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1218t"]
-atlas = ExtResource("2_crujv")
+atlas = ExtResource("5_4jk0n")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3jqlg"]
-atlas = ExtResource("2_crujv")
+atlas = ExtResource("5_4jk0n")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqqwc"]
-atlas = ExtResource("2_crujv")
+atlas = ExtResource("5_4jk0n")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_do7rk"]
@@ -75,7 +76,7 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_akges"]
 font_size = 47
 
-[node name="MainMenu" type="Control"]
+[node name="YouWin" type="Control"]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -83,7 +84,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ybjsn")
+script = ExtResource("1_48nlc")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -101,11 +102,11 @@ tile_set = SubResource("TileSet_jfduk")
 [node name="Godotlogo" type="Sprite2D" parent="."]
 position = Vector2(1010, 720)
 scale = Vector2(0.149414, 0.149414)
-texture = ExtResource("5_urj5y")
+texture = ExtResource("4_q37eo")
 
 [node name="Character" type="AnimatedSprite2D" parent="."]
-position = Vector2(952, 399.476)
-scale = Vector2(9.8125, 8.0369)
+position = Vector2(765, -4)
+scale = Vector2(47.8426, 39.1853)
 sprite_frames = SubResource("SpriteFrames_do7rk")
 animation = &"idle"
 autoplay = "idle"
@@ -113,13 +114,20 @@ flip_h = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-offset_left = 73.0
-offset_top = 110.0
-offset_right = 544.0
-offset_bottom = 290.0
+offset_left = 58.0
+offset_top = 93.0
+offset_right = 529.0
+offset_bottom = 377.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+
+[node name="Title2" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "You are"
+label_settings = SubResource("LabelSettings_akges")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -132,24 +140,34 @@ vertical_alignment = 1
 [node name="Control" type="Control" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 31
-text = "Start Game"
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
 
-[node name="OptionsButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+
+[node name="PlayAgain" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_lff6f")
 theme_override_font_sizes/font_size = 31
-text = "Options"
+text = "Play Again?"
+
+[node name="MainMenu" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_lff6f")
+theme_override_font_sizes/font_size = 31
+text = "Main Menu"
 
 [node name="Sounds" type="Node" parent="."]
 
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("4_kgt08")
+stream = ExtResource("6_vapk2")
 autoplay = true
 bus = &"Music"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/PlayAgain" to="." method="_on_playagain_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_mainmenu_button_pressed"]

@@ -6,7 +6,7 @@ extends StaticBody2D
 @onready var food_groups : Array[Node2D] = [$FoodGroup1, $FoodGroup2, $FoodGroup3]
 
 var shell_children = []
-var spawn_chance : float = 0.6
+var spawn_chance : float = 0.4
 
 func _ready() -> void:
 	get_shell_children()

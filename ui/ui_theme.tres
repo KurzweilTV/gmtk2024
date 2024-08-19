@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c4p5f4y126i3c"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c4p5f4y126i3c"]
 
-[ext_resource type="StyleBox" uid="uid://bju8jidk7xjcc" path="res://ui/progress_fill.tres" id="1_n7xu1"]
+[ext_resource type="FontFile" uid="uid://bwxibiw0w5yn3" path="res://ui/fonts/Kenney Future Narrow.ttf" id="1_fikmq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb01v"]
 bg_color = Color(0.169245, 0.169245, 0.169245, 1)
@@ -17,7 +17,17 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xk5hg"]
+bg_color = Color(0.192157, 0.490196, 0.368627, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [resource]
+Button/fonts/font = ExtResource("1_fikmq")
+Label/fonts/font = ExtResource("1_fikmq")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_lb01v")
+ProgressBar/fonts/font = ExtResource("1_fikmq")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ly6hg")
-ProgressBar/styles/fill = ExtResource("1_n7xu1")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_xk5hg")

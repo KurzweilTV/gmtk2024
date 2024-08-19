@@ -2,9 +2,10 @@ extends Area2D
 
 @export var shell_scale : float = 1.0
 @export var story_shell : bool = false
+@export var king_shell : bool = false
 @onready var debug_label: Label = $DebugLabel
 
-var max_upgrade := 1.6
+var max_upgrade := 0.5
 var max_downgrade := -0.2
 
 
@@ -39,4 +40,9 @@ func _on_body_entered(body: Node2D) -> void:
 		var player : CharacterBody2D = body
 		player.update_player_scale(shell_scale)
 		SignalBus.new_shell.emit(shell_scale)
-		self.queue_free()
+		
+		if king_shell:
+			SignalBus.game_won.emit()
+			self.queue_free()
+		else:
+			self.queue_free()
