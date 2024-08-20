@@ -36,7 +36,8 @@ window/stretch/aspect="expand"
 
 folder_colors={
 "res://actors/rocks/art/": "orange",
-"res://art/": "orange"
+"res://art/": "orange",
+"res://ui/art/": "orange"
 }
 
 [global_group]

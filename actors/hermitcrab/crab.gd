@@ -36,6 +36,7 @@ func get_input() -> Vector2:
 func update_animation(direction: Vector2):
 	if direction != Vector2.ZERO and not hiding and not dead: #animation based on movement
 		sprite.play("walk")
+		Player.location_x = self.global_position.x
 		
 		# Flip based on direction
 		if direction.x < 0:

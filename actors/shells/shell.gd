@@ -6,7 +6,7 @@ extends Area2D
 @onready var debug_label: Label = $DebugLabel
 
 var max_upgrade := 0.5
-var max_downgrade := -0.2
+var max_downgrade := -0.1
 
 
 func _ready() -> void:
@@ -16,6 +16,7 @@ func _ready() -> void:
 		setup_new_shells(Player.shell_size)
 		debug_label.text = "DEBUG: " + str(Player.shell_size)
 	else: 
+		%Upgrade.show()
 		self.scale = Vector2(shell_scale, shell_scale)
 		
 

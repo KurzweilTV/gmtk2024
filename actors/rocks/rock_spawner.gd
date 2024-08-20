@@ -6,7 +6,7 @@ extends StaticBody2D
 @onready var food_groups : Array[Node2D] = [$FoodGroup1, $FoodGroup2, $FoodGroup3]
 
 var shell_children = []
-var spawn_chance : float = 0.4
+var spawn_chance : float = 0.6
 
 func _ready() -> void:
 	get_shell_children()
@@ -21,8 +21,10 @@ func get_shell_children():
 func spawn_food() -> void:
 	if not tutorial_rock:
 		for group in food_groups:
-			if randf_range(0, 1) > spawn_chance:
+			if randf_range(0, 1) >= spawn_chance:
 				group.queue_free()
+			else:
+				group.show()
 	else:
 		for group in food_groups:
 			group.queue_free()
@@ -32,6 +34,8 @@ func spawn_shell() -> void:
 		for shell in shell_children:
 			if randf_range(0, 1) > spawn_chance:
 				shell.queue_free()
+			else:
+				shell.show()
 	else:
 		for shell in shell_children:
 			shell.queue_free()

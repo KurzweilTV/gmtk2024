@@ -1,13 +1,14 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c4p5f4y126i3c"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c4p5f4y126i3c"]
 
 [ext_resource type="FontFile" uid="uid://bwxibiw0w5yn3" path="res://ui/fonts/Kenney Future Narrow.ttf" id="1_fikmq"]
+[ext_resource type="StyleBox" uid="uid://ddcq0ft57jo6" path="res://ui/map_panel.tres" id="2_wwihh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb01v"]
 bg_color = Color(0.169245, 0.169245, 0.169245, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ly6hg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0980392)
@@ -27,7 +28,10 @@ corner_radius_bottom_left = 10
 [resource]
 Button/fonts/font = ExtResource("1_fikmq")
 Label/fonts/font = ExtResource("1_fikmq")
+Panel/styles/panel = ExtResource("2_wwihh")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_lb01v")
 ProgressBar/fonts/font = ExtResource("1_fikmq")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ly6hg")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_xk5hg")
+panel/base_type = &"Panel"
+panel/styles/panel = ExtResource("2_wwihh")

@@ -1,14 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba57xxvv5k7uv"]
+[gd_scene load_steps=16 format=3 uid="uid://ba57xxvv5k7uv"]
 
 [ext_resource type="Theme" uid="uid://c4p5f4y126i3c" path="res://ui/ui_theme.tres" id="1_8k4mf"]
 [ext_resource type="Script" path="res://ui/main_ui.gd" id="1_ki0ie"]
+[ext_resource type="Texture2D" uid="uid://cy7jmkbrq6d84" path="res://actors/food/art/FoodPellet.png" id="2_kwai6"]
 [ext_resource type="PackedScene" uid="uid://dlyfkd5u0te8k" path="res://ui/gameover.tscn" id="3_uw2fb"]
+[ext_resource type="Texture2D" uid="uid://bwm53wejcohdk" path="res://actors/hermitcrab/crab_sprite_sheet_redact.png" id="4_7efxw"]
+[ext_resource type="Texture2D" uid="uid://bsjiaw26pplte" path="res://art/shittycrown.png" id="6_awebh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_llkex"]
 font_size = 21
 font_color = Color(0.192157, 0.490196, 0.368627, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.380392)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3innj"]
+atlas = ExtResource("4_7efxw")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vcvg"]
+atlas = ExtResource("4_7efxw")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nhg3"]
+atlas = ExtResource("4_7efxw")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpy8h"]
+atlas = ExtResource("4_7efxw")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnn4f"]
+atlas = ExtResource("4_7efxw")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ulr4"]
+atlas = ExtResource("4_7efxw")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3b8sk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3innj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vcvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nhg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpy8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnn4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ulr4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf4s0"]
+bg_color = Color(0, 0.671585, 0.782234, 1)
 
 [node name="PlayerUI" type="Control"]
 texture_filter = 1
@@ -42,7 +98,13 @@ theme_override_constants/margin_bottom = 4
 [node name="HBoxContainer" type="GridContainer" parent="CanvasLayer/PlayerStatus/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-columns = 2
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayerStatus/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_kwai6")
+expand_mode = 3
 
 [node name="FoodLabel" type="Label" parent="CanvasLayer/PlayerStatus/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -106,6 +168,39 @@ horizontal_alignment = 2
 [node name="ZoomLabel" type="Label" parent="CanvasLayer/DEBUG/GridContainer"]
 layout_mode = 2
 text = "10"
+
+[node name="Character" type="AnimatedSprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(165, 744)
+scale = Vector2(2.4125, 1.97595)
+sprite_frames = SubResource("SpriteFrames_3b8sk")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1028, 757)
+texture = ExtResource("6_awebh")
+
+[node name="DistanceUI" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -408.0
+offset_top = -59.0
+offset_right = 403.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="WalkBar" type="ProgressBar" parent="CanvasLayer/DistanceUI"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_jf4s0")
+max_value = 17000.0
+step = 1.0
+show_percentage = false
 
 [node name="Gameover" parent="CanvasLayer" instance=ExtResource("3_uw2fb")]
 visible = false

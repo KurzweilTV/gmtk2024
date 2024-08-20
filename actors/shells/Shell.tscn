@@ -129,6 +129,7 @@ label_settings = SubResource("LabelSettings_k2k5o")
 [node name="Upgrade" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
+z_index = 5
 position = Vector2(9, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_q6npn")
@@ -142,6 +143,7 @@ autoplay = "upgrade"
 [node name="Downgrade" type="Sprite2D" parent="." groups=["shell"]]
 unique_name_in_owner = true
 visible = false
+z_index = 5
 position = Vector2(9, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_jpnoo")

@@ -139,6 +139,7 @@ theme_override_font_sizes/font_size = 31
 text = "Start Game"
 
 [node name="OptionsButton" type="Button" parent="PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 31

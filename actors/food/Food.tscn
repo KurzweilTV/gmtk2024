@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhbrt1ttpal"]
+[gd_scene load_steps=5 format=3 uid="uid://bhbrt1ttpal"]
 
 [ext_resource type="Texture2D" uid="uid://cy7jmkbrq6d84" path="res://actors/food/art/FoodPellet.png" id="1_4bdq0"]
 [ext_resource type="Script" path="res://actors/food/food.gd" id="1_44cii"]
+[ext_resource type="AudioStream" uid="uid://cprmaek2v20fa" path="res://sounds/sfx/collect.mp3" id="3_2ncbr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0mlw"]
 radius = 64.0078
@@ -17,5 +18,10 @@ texture = ExtResource("1_4bdq0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_x0mlw")
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2ncbr")
+volume_db = -8.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
