@@ -3,5 +3,6 @@
 .godot/
 /android/
 
+/build/
 *.DS*
 *redact*
