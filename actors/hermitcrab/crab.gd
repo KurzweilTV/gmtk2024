@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var sprite : AnimatedSprite2D = $Sprite 
 @onready var autoshadow : AnimatedSprite2D = $Sprite/AutoShadow
 @onready var camera: Camera2D = $Camera2D
+@onready var seagull_sound: AudioStreamPlayer = $SeagullSound
 
 var tutorial_complete = false
 var hiding = false
@@ -170,4 +171,5 @@ func _on_attack_timer_timeout() -> void:
 	var seagull = seagull_scene.instantiate()
 	add_child(seagull)
 	seagull.attack()
+	seagull_sound.play()
 	start_attack_timer()

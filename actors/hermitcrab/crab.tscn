@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://c41sk4f3rsko2"]
+[gd_scene load_steps=36 format=3 uid="uid://c41sk4f3rsko2"]
 
 [ext_resource type="Script" path="res://actors/hermitcrab/crab.gd" id="1_kxskr"]
 [ext_resource type="Texture2D" uid="uid://bwm53wejcohdk" path="res://actors/hermitcrab/crab_sprite_sheet_redact.png" id="2_64wsp"]
+[ext_resource type="AudioStream" uid="uid://baslm1gtbqmc7" path="res://sounds/sfx/SeagullAttack.wav" id="3_6te1c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r70gq"]
 atlas = ExtResource("2_64wsp")
@@ -335,6 +336,10 @@ one_shot = true
 [node name="FoodTimer" type="Timer" parent="."]
 
 [node name="HideTimer" type="Timer" parent="." groups=["player"]]
+
+[node name="SeagullSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6te1c")
+volume_db = -5.0
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="FoodTimer" to="." method="_on_food_timer_timeout"]

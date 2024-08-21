@@ -1,6 +1,6 @@
 extends Control
 
-@export var main_game_scene : PackedScene = preload("res://maps/main.tscn")
+@export var main_game_scene : PackedScene = load("res://maps/main.tscn")
 @export var main_menu_scene : PackedScene = load("res://ui/main_menu.tscn")
 
 
